@@ -1,0 +1,45 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+		<title>新的页面</title>
+		<link type="text/css" href="css/ui-lightness/jquery-ui-1.8.9.custom.css" rel="stylesheet" />
+		<script type="text/javascript" src="./js/jquery-1.4.4.min.js"></script>
+		<script type="text/javascript" src="./js/jquery-ui-1.8.9.custom.min.js"></script>
+		<script type="text/javascript" src="./js/001.js"></script>
+		<style type="text/css"></style>
+		<script type="text/javascript"></script>
+		<style type="text/css">
+			/*demo page css*/
+			/*
+			.demoHeaders { margin-top: 2em; }
+			ul#icons {margin: 0; padding: 0;}
+			ul#icons span.ui-icon {float: left; margin: 0 4px;}
+			ul#icons li {margin: 2px; position: relative; padding: 4px 0; cursor: pointer; float: left;  list-style: none;}
+		   */
+		   body{ font: 62.5% "Trebuchet MS", sans-serif; margin: 50px;}			#dialog_link span.ui-icon {margin: 0 5px 0 0;position: absolute;left: .2em;top: 50%;margin-top: -8px;}
+			#dialog_link {padding: .4em 1em .4em 20px;text-decoration: none;position: relative;}
+		</style>
+	</head>
+	<body>
+		<p><a href="#" id="dialog_link" class="ui-state-default ui-corner-all"><span class="ui-icon ui-icon-newwin"></span>登录</a></p>
+		<div id="dialog" title="登录">
+			<table width="200" border="1">
+				<tr>
+					<td>用户名</td>
+					<td><label><input name="user_name" type="text" id="user_name" size="15" maxlength="20" /></label></td>
+					</tr>
+				<tr>
+      <td>密码</td>
+      <td><input name="pwd" type="password" id="pwd" size="15" maxlength="20" /></td>
+    </tr>
+    <tr>
+      <td>验证码</td>
+      <td>
+        <input name="check_code" type="text" id="check_code" size="4" maxlength="4" />
+		<label id="png_code"/></td>
+    </tr>
+  </table>
+		</div>
+	</body>
+</html>
