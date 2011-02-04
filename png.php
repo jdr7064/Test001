@@ -4,8 +4,9 @@ $img_height=70;	//	图片的长
 $img_width=25;	//	图片的宽
 $authnum='';
 //	生产验证码字符
-$list=array('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z');
-for($i=0;$i<4;$i++){ $authnum.=$list[rand(0,35)]; }
+// $list=array('0','1','2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z');
+$list=array('2','3','4','5','6','7','8','9','A','B','C','D','E','F','G','H','J','K','L','M','N','P','Q','R','S','T','U','V','W','X','Y','Z');
+for($i=0;$i<4;$i++){ $authnum.=$list[rand(0, 31)]; }
 
 $aimg=imagecreate($img_height, $img_width);	//	生成图片
 imagecolorallocate($aimg, 255,255,255);		//	图片底色，ImageColorAllocate第1次定义颜色PHP就认为是底色了
