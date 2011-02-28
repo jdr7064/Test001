@@ -11,6 +11,34 @@ $(document).ready(function() {
 		$('#png_code').append(t_img);
 	}
 
+	//	发送数据
+	function post_data() {
+				if($('#check_code').val().length==4) {
+					$.ajax({
+						type: "POST", 
+						url: post_usl_login,
+						data: 'user_name='+$('#user_name').val()+'&pwd='+$('#pwd').val()+'&check_code='+$('#check_code').val(),
+						success:function(xml) {
+							//		window.alert($(xml).find('result').text());
+							if($(xml).find('result').text()=="OK") {
+								//	window.alert("Success");
+								$('#dialog').dialog("close");
+								$('#user_name_0').html('<h3>欢迎 <im>'+$('#user_name').val()+'</im> 回来</h3>');
+								$('#dialog_welcome').dialog("open");
+							} else {
+								get_check_img();
+								$('#msg_info').text('输入的信息错误, 请重新输入');
+								$('#user_name').focus();
+							}
+						},
+						error: function(XMLHttpRequest, textStatus, errorThrown) {}
+					});
+				} else {
+					window.alert('验证码不正确!');
+					$('#check_code').focus();
+				}
+	}
+
 	//	清空消息提示
 	$('#pwd, #check_code').focus(function() {	$('#msg_info').text(''); });
 
@@ -45,30 +73,7 @@ $(document).ready(function() {
 		width: 230,
 		buttons: {
 			"登录": function() {
-				if($('#check_code').val().length==4) {
-					$.ajax({
-						type: "POST", 
-						url: post_usl_login,
-						data: 'user_name='+$('#user_name').val()+'&pwd='+$('#pwd').val()+'&check_code='+$('#check_code').val(),
-						success:function(xml) {
-							//		window.alert($(xml).find('result').text());
-							if($(xml).find('result').text()=="OK") {
-								//	window.alert("Success");
-								$('#dialog').dialog("close");
-								$('#user_name_0').html('<h3>欢迎 <im>'+$('#user_name').val()+'</im> 回来</h3>');
-								$('#dialog_welcome').dialog("open");
-							} else {
-								get_check_img();
-								$('#msg_info').text('输入的信息错误, 请重新输入');
-								$('#user_name').focus();
-							}
-						},
-						error: function(XMLHttpRequest, textStatus, errorThrown) {}
-					});
-				} else {
-					window.alert('验证码不正确!');
-					$('#check_code').focus();
-				}
+				post_data();
 			},
 			"取消": function() {
 				$(this).dialog("close");
@@ -76,4 +81,15 @@ $(document).ready(function() {
 		}
 	});
 
+	//	回车键提交
+	$('#dialog').keydown(function(event) {
+		if(event.keyCode==13) {
+			post_data();
+		}
+	});
+
+	//	任意键关闭对话框
+	$('#dialog_welcome').keydow(function(event) {
+		$('#dialog_welcome').dialog('close');
+	});
 });;
